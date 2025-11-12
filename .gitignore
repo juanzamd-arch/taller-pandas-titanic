@@ -1,22 +1,31 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
-.vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-file
-*.flf
-#Test results file
-TestResults.xml
+# 1. Entornos Virtuales y Caché del Lenguaje
+
+# Entorno virtual de Python (crucial)
+.venv/
+venv/
+env/
+
+# Caché de Python (archivo binario de bytecode)
+__pycache__/
+*.pyc
+*.pyd
+*.so
+
+# Carpetas de librerías de Python
+/lib/
+/dist/
+/build/
+
+# 2. Datos (¡No subas datos sin procesar!)
+
+# La mejor práctica es ignorar una carpeta dedicada a los datos sin procesar.
+/data/raw/*
+
+# Archivos de datos procesados, si son grandes.
+# Es mejor rastrear un archivo README en la carpeta /data/processed.
+/data/processed/
+
+# Archivos de datos que son el resultado del análisis
+*.csv    #Es decir test.csv, train.csv
+*.xlsx
+*.parquet
