@@ -6,12 +6,30 @@ El proyecto consiste en un Análisis Exploratorio de Datos (EDA) con Pandas para
 
 **Integrantes**
 
-Diego Felipe Herrán Contreras-Líder de datos.
-Paula Catalina Rodríguez Torres-Líder de reporte.
-Juan Andrés Zambrano Mora-Líder de repositorio.
+- Diego Felipe Herrán Contreras-Líder de datos.
+- Paula Catalina Rodríguez Torres-Líder de reporte.
+- Juan Andrés Zambrano Mora-Líder de repositorio.
 
 **Objetivos**
 
-Establecer un flujo de trabajo colaborativo eficaz utilizando la plataforma GitHub y la herramienta GitHub Desktop.
-Desarrollar gráficos informativos que sinteticen los hallazgos clave, asegurando que cada visualización aporte una interpretación clara.
-Generar estadísticas básicas y hacer comparaciones entre los conjuntos de datos de entrenamiento (train) y prueba (test).
+1. Establecer un flujo de trabajo colaborativo eficaz utilizando la plataforma GitHub y la herramienta GitHub Desktop.
+2. Desarrollar gráficos informativos que sinteticen los hallazgos clave, asegurando que cada visualización aporte una interpretación clara.
+3. Generar estadísticas básicas y hacer comparaciones entre los conjuntos de datos de entrenamiento (train) y prueba (test).
+
+**Estructura del Proyecto**
+
+* **taller-pandas-titanic/**
+    * **data/**
+        * `README.md`
+        * `test.csv`
+        * `train.csv`
+    * **docs/**
+        * `Informe.pdf`
+    * **notebook/**
+        * **outputs/**
+        * **tablas/**
+        * **graficas/**
+    * **.gitignore**
+    * `README.md`
+    * `src.ipynb`
+
