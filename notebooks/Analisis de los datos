@@ -1,0 +1,111 @@
+**Analisis de los datos**
+
+3. Los dos conjuntos de datos, train.csv y test.csv, son altamente consistentes y representativos uno del otro.
+
+**Respuesta**
+
+- Edad y Clase (Age y Pclass): La edad promedio es casi idéntica (alrededor de 30 años) y la distribución de la clase de tiquete es homogénea. Esto significa que los pasajeros en ambos grupos tienen el mismo perfil etario y socioeconómico promedio.
+
+- Tarifa (Fare): La mediana es exactamente la misma ($14.45), lo que asegura que el valor central de la tarifa pagada es consistente en ambos datasets.
+
+por lo tanto Los patrones de supervivencia para que un modelo aprenda en el conjunto de entrenamiento serán válidos para hacer predicciones en el conjunto de prueba.
+
+4. La variable Familiares es altamente valiosa para el análisis predictivo. Esta Combina las variables SibSp y Parch en una única métrica para medir el Tamaño del Grupo Familiar, de manera que es un mejor predictor de supervivencia que las variables separadas porque clasifica a los pasajeros directamente en los tres grupos de riesgo más importantes según las dinámicas de rescate:
+
+**Respuesta**
+
+Viajó Solo (Familiares = 0).
+
+Familia Pequeña (alta probabilidad de rescate).
+
+Familia Grande (baja probabilidad de rescate).
+
+En resumen, Familiares alinea los datos con el factor humano, siendo fundamental para predecir la supervivencia.
+
+5. Junte verticalmente los dataframes train y test en un solo conjunto de datos. Antes de hacerlo, agregue una nueva columna llamada source que indique el origen de cada fila ("train" o "test"). Recuerde que el conjunto test no contiene la variable Survived,por lo tanto ¿qu´e va a hacer con esta columna?
+
+**Respuesta**
+
+Al fusionar el DataFrame test con el DataFrame train, la columna Survived en las filas provenientes de test se llenará automáticamente con valores nulos (NaN).
+
+Esto es exactamente lo que se busca, ya que los valores nulos (NaN) en esa columna representarán los resultados que el modelo deberá predecir más adelante.
+
+6. Revise las estadísticas nuevamente y analice (discuta) si los conjuntos de datos train.csv y test.csv son representativos del conjunto de datos del item anterior.
+
+**Respuesta**
+
+El análisis de las estadísticas del conjunto combinado (combined_df, del total de 1309 pasajeros) confirma que el conjunto de entrenamiento (train.csv) es altamente representativo de la población total.
+
+Media y Mediana: La edad promedio (cercana a 30 años) y la mediana de la tarifa ( 14.45 ) son prácticamente idénticas en el conjunto train y en el combined_df.
+
+En conclusion las pequeñas diferencias son insignificantes lo que asegura que los patrones y relaciones descubiertos al analizar train.csv son válidos y se generalizarán bien a todo el conjunto de datos.
+
+7. ¿Que variables presentan datos faltantes?, ¿que significado tienen esos datos faltantes? Las variables que cuentan con espacios vacios son: survived, Age, Cabin y Embarket.
+
+**Respuesta**
+
+La variable con mas espacios faltantes es cabin. Es problabel que se debe porque unicamente registraron los pasageros con pclass=1 y pclass=2, mientras que pclass=3 tienen la variable cabin vacia. La segunda variables con mas datos faltantes es survived pertenecientes al data frame "test.csv" lo que quiere decir es que es la cantidad de datos que el modelo debe predecir. Mientras que los datos faltantes de la edad se debe a que no se logro llenar el registro por completo de todos los tripulantes. Finalmente tanto la variable Embarked y Fare suman un total de 3 datos faltante, al ser tan pocos datos puede que hallan sido un error al momento de registrar los datos.
+
+9. Responda las siguientes preguntas y luego verifique con los datos (utilice groupby, agg o tablas de contingencia para justificar sus respuestas y, cuando se pida proporcionalmente, calcule tasas en lugar de conteos).
+(a) ¿Cree usted que sobrevivieron m´as mujeres que hombres? ¿y proporcionalmente?
+
+(b) ¿Cree usted que sobrevivieron m´as ni˜nos que hombres adultos? ¿y proporcionalmente?
+
+(c) ¿Cree usted que pasajeros con edad mayor a 50 a˜nos o menor a 10 a˜nos sobrevevivieron m´as que pasajeros en cualquier otro grupo etario? ¿y proporcionalmente?
+
+(d) ¿Cree usted que la mayor cantidad de pasajeros sobrevivientes partieron del puerto de Southampton o de los otros puertos? ¿y proporcionalmente?
+
+(e) ¿Cree usted que pasajeros con tiquetes de primera clase sobrevivieron más que pasajeros con otros tipos de tiquetes? ¿y proporcionalmente?
+
+**Respuesta**
+
+a. Sí, es probable que hayan sobrevivido más mujeres que hombres. En aquella época, durante emergencias marítimas, era común aplicar la norma de “mujeres y niños primero”.
+
+De acuerdo a estos datos las mujeres sobrevivieron más en cantidad y proporcionalmente. Hombres ≈ 19%, Mujeres ≈ 74%
+
+b. Aunque había menos niños a bordo que adultos, es probable que proporcionalmente los niños hayan sobrevivido más, ya que eran parte del grupo priorizado en los rescates junto con las mujeres. Sin embargo, en números absolutos, los hombres adultos eran mayoría, así que probablemente sobrevivieron más adultos que niños.
+
+En total sobrevivieron pocos niños hombres (porque eran pocos), pero proporcionalmente los niños hombres tuvieron mayor tasa de supervivencia que los adultos hombres.
+
+c. Probablemente los pasajeros entre 20 y 40 años fueron los más numerosos y, por tanto, con más sobrevivientes. Pero proporcionalmente, los menores de 10 años pudieron tener más oportunidades de sobrevivir, ya que eran priorizados en el rescate. En cambio, las personas mayores de 50 posiblemente tuvieron menor capacidad física para reaccionar, por lo que su tasa de supervivencia podría haber sido más baja.
+
+En cantidad, la mayoría de sobrevivientes están entre 10 y 50 años (porque son más). Pero proporcionalmente, los menores de 10 tienen una mayor tasa de supervivencia.
+
+d. Probablemente la mayoría de los sobrevivientes partieron de Southampton, porque fue el puerto de embarque con más pasajeros en general. Sin embargo, proporcionalmente, los pasajeros de otros puertos, como Cherbourg, pudieron tener una mejor tasa de supervivencia, ya que allí embarcaron más personas de clases altas.
+
+Southampton tiene más sobrevivientes absolutos (porque salió la mayoría de pasajeros).Pero proporcionalmente, los de Cherbourg (C) tuvieron mayor tasa de supervivencia.
+
+e.Sí, es razonable pensar que los pasajeros de primera clase sobrevivieron más, tanto en número como en proporción. Ellos estaban ubicados en los niveles superiores del barco, más cerca de los botes salvavidas, y probablemente recibieron ayuda más rápidamente que los de segunda o tercera clase.
+
+En cantidad: 3ra clase tenía más pasajeros, pero menos sobrevivientes.Proporcionalmente, los de primera clase (Pclass = 1) tienen la mayor tasa de supervivencia (~63%).
+
+10. Usando la nueva variable llamada Familiares como la suma de las variables SibSp y Parch. A partir de ella, clasifique a los pasajeros en tres grupos familiares:
+
+• Grupo 1: sin familiares a bordo (Familiares = 0)
+
+• Grupo 2: familias pequeñas (Familiares entre 1 y 3)
+
+• Grupo 3: familias grandes (Familiares mayores o iguales a 4) Luego, muestre c´omo era la distribuci´on de cabinas (Cabin) en cada grupo familiar.
+
+**Respuesta**
+
+Familia Pequeña: Este grupo tiene la mayor proporción de registros de cabina (31.7%). Esto sugiere que las familias pequeñas eran las más propensas a estar en 1ª o 2ª clase, lo que históricamente se asocia con mayores tasas de supervivencia.
+
+Sin Familiares: Los pasajeros que viajaban solos tienen una proporción de cabina del (24.3%), pero inferior a las familias pequeñas. Esto indica que este grupo incluye una mezcla de clases sociales.
+
+Familia Grande: Este grupo tiene la proporción más baja de registros de cabina (11.4%). Esta fuerte correlación sugiere que la mayoría de las familias grandes viajaban en 3ª clase, donde los registros de cabina eran escasos o no existían. Esto valida la idea de que el tamaño de la familia está relacionado al estatus socioeconómico.
+
+13. ¿Quiénes tenían más probabilidades de sobrevivir?
+
+**Respuesta**
+
+La supervivencia estaba determinada por una clara jerarquía basada en la regla de "mujeres y niños primero" y el privilegio de la clase social.
+
+Los pasajeros con mayor probabilidad de sobrevivir eran:
+
+Mujeres: El factor más decisivo, con una tasa de supervivencia cercana al $74% Niños (Menores de 10 años): Se les dio alta prioridad, con tasas muy superiores al promedio de los hombres adultos.
+
+Pasajeros de Primera Clase: Su estatus social y la ubicación de su cabina cerca de la cubierta de botes les proporcionó una ventaja clave, con tasas de supervivencia de aproximadamente el 63%
+
+En resumen, una Mujer, preferiblemente de Primera Clase, tenía la mejor oportunidad de ser rescatada.
+
